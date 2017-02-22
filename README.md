@@ -4,4 +4,4 @@ SquidGuard for Entware-ng
 
 
 
-The package is compiling to the root of the file system /opt
+The package is compiled to the root of the file system /opt
