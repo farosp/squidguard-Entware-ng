@@ -1,5 +1,3 @@
-
-
 include $(TOPDIR)/rules.mk 
 
 PKG_NAME:=squidGuard
