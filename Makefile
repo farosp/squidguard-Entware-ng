@@ -24,7 +24,7 @@ endef
 define Package/squidGuard
   $(call Package/squidGuard/Default)
   MENU:=1
-  DEPENDS:=+libdb47 +libpthread +glib2
+  DEPENDS:=+libdb47 +libpthread +glib2 +squid
   TITLE:=Combined filter, redirector and access controller plugin for Squid endef define Package/squidguard/description SquidGuard is a URL redirector used to use blacklists with the proxysoftware Squid. There are two big advantages to squidguard: it is fast and it is free. 
 endef 
 
