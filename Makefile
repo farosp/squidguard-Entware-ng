@@ -1,14 +1,14 @@
 include $(TOPDIR)/rules.mk 
 
 PKG_NAME:=squidGuard
-PKG_VERSION:=1.5-beta
+PKG_VERSION:=1.6.0-1
 PKG_RELEASE:=2
 PKG_LICENSE:=GNU
 PKG_MAINTAINER:=Ivan Ivanov <andrroidtex@gmail.com>
-PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.gz
-PKG_SOURCE_URL:=http://www.squidguard.org/Downloads/Devel/
-PKG_MD5SUM:=85216992d14acb29d6f345608f21f268 
-
+PKG_SOURCE_PROTO:=git
+PKG_SOURCE_URL:=https://salsa.debian.org/joowie-guest/maintain_squidguard.git
+PKG_SOURCE_VERSION:=7b373fffa224c6a350553d8f9f4aef9cd7a125bf
+PKG_MIRROR_HASH:=97a023caada7506d7dde0a0169215c5b0f81ec89b80ed10b1e8fff445ccaaeec
 PKG_BUILD_PARALLEL:=1 
 PKG_INSTALL:=1 
 
@@ -39,10 +39,14 @@ CONFIGURE_ARGS += \
 	--with-sg-config=/opt/etc/squidguard/squidguard.conf \
 	--with-squiduser=nobody 
 
+define Build/Configure
+	( cd $(PKG_BUILD_DIR); ./autogen.sh)
+	$(call Build/Configure/Default,$CONFIGURE_ARGS)
+endef
 
 define Build/Compile
 	+$(MAKE) $(PKG_JOBS) -C $(PKG_BUILD_DIR) \
-		DESTDIR="$(PKG_INSTALL_DIR)" all
+		DESTDIR="$(PKG_INSTALL_DIR)"
 	$(MAKE) -C $(PKG_BUILD_DIR) \
 		DESTDIR="$(PKG_INSTALL_DIR)" install 
 endef
