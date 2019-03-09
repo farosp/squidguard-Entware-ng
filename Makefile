@@ -56,7 +56,7 @@ define Package/squidGuard/install
 	$(INSTALL_BIN) $(PKG_BUILD_DIR)/src/squidGuard $(1)/opt/sbin
 
 	$(INSTALL_DIR) $(1)/opt/etc/squidguard
-	$(INSTALL_CONF) ./files/squidguard.conf $(1)/opt/etc/squidguard/squidguard.conf
+	$(INSTALL_CONF) ./files/squidGuard.conf $(1)/opt/etc/squidguard/squidGuard.conf
 
 	$(INSTALL_DIR) $(1)/opt/usr/squidguard/db/blacklist
 	$(CP) $(PKG_BUILD_DIR)/test/blacklist/* $(1)/opt/usr/squidguard/db/blacklist
